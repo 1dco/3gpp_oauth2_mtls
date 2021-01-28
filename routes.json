@@ -1,0 +1,4 @@
+{
+  "/nnrf-nfm/v1/*": "/$1",
+  "/nnrf-nfm/v1/nf-instances/*": "/nf-instances/$1"
+}

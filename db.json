@@ -1,0 +1,290 @@
+{
+  "nf-instances": [
+    {
+      "nfInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "nfInstanceName": "AMF001",
+      "nfType": "AMF",
+      "nfStatus": "REGISTERED",
+      "heartBeatTimer": 0,
+      "plmnList": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "snpnList": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "01"
+        }
+      ],
+      "sNssais": [
+        {
+          "sst": 1,
+          "sd": "00001"
+        }
+      ],
+      "perPlmnSnssaiList": [
+        {
+          "plmnId": {
+            "mcc": "262",
+            "mnc": "02"
+          },
+          "sNssaiList": [
+            {
+              "sst": 1,
+              "sd": "00001"
+            }
+          ],
+          "nid": "01"
+        }
+      ],
+      "fqdn": "pt01.set001.region01.amfi.5gc.mnc002.mcc262.3gppnetwork.org",
+      "allowedPlmns": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "allowedSnpns": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "01"
+        }
+      ],
+      "allowedNfTypes": [
+        "AMF"
+      ],
+      "allowedNssais": [
+        {
+          "sst": 1,
+          "sd": "00001"
+        }
+      ],
+      "amfInfo": {
+        "amfSetId": "1",
+        "amfRegionId": "1",
+        "guamiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "amfId": "1"
+          }
+        ],
+        "taiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "tac": "41001",
+            "nid": "01"
+          }
+        ]
+      }
+    },
+    {
+      "nfInstanceId": "33e35965e-5ce2-4783-bd42-49b3014643d2",
+      "nfInstanceName": "AMF002",
+      "nfType": "AMF",
+      "nfStatus": "REGISTERED",
+      "heartBeatTimer": 0,
+      "plmnList": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "snpnList": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "02"
+        }
+      ],
+      "sNssais": [
+        {
+          "sst": 1,
+          "sd": "00001"
+        }
+      ],
+      "perPlmnSnssaiList": [
+        {
+          "plmnId": {
+            "mcc": "262",
+            "mnc": "02"
+          },
+          "sNssaiList": [
+            {
+              "sst": 1,
+              "sd": "00001"
+            }
+          ],
+          "nid": "01"
+        }
+      ],
+      "fqdn": "pt02.set002.region01.amfi.5gc.mnc002.mcc262.3gppnetwork.org",
+      "allowedPlmns": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "allowedSnpns": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "01"
+        }
+      ],
+      "allowedNfTypes": [
+        "AMF"
+      ],
+      "allowedNssais": [
+        {
+          "sst": 1,
+          "sd": "00002"
+        }
+      ],
+      "amfInfo": {
+        "amfSetId": "2",
+        "amfRegionId": "1",
+        "guamiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "amfId": "2"
+          }
+        ],
+        "taiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "tac": "41002",
+            "nid": "02"
+          }
+        ]
+      }
+    },
+    {
+      "nfInstanceId": "e61ba11a-c7d8-43f2-a0b9-2e0db870ab78",
+      "nfInstanceName": "AMF003",
+      "nfType": "AMF",
+      "nfStatus": "UNDISCOVERABLE",
+      "heartBeatTimer": 0,
+      "plmnList": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "snpnList": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "03"
+        }
+      ],
+      "sNssais": [
+        {
+          "sst": 1,
+          "sd": "00001"
+        }
+      ],
+      "perPlmnSnssaiList": [
+        {
+          "plmnId": {
+            "mcc": "262",
+            "mnc": "02"
+          },
+          "sNssaiList": [
+            {
+              "sst": 1,
+              "sd": "00001"
+            }
+          ],
+          "nid": "03"
+        }
+      ],
+      "fqdn": "pt03.set003.region01.amfi.5gc.mnc002.mcc262.3gppnetwork.org",
+      "allowedPlmns": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ],
+      "allowedSnpns": [
+        {
+          "mcc": "262",
+          "mnc": "02",
+          "nid": "03"
+        }
+      ],
+      "allowedNfTypes": [
+        "AMF"
+      ],
+      "allowedNssais": [
+        {
+          "sst": 1,
+          "sd": "00001"
+        }
+      ],
+      "amfInfo": {
+        "amfSetId": "3",
+        "amfRegionId": "1",
+        "guamiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "amfId": "3"
+          }
+        ],
+        "taiList": [
+          {
+            "plmnId": {
+              "mcc": "262",
+              "mnc": "02"
+            },
+            "tac": "41003",
+            "nid": "03"
+          }
+        ]
+      }
+    },
+    {
+      "nfInstanceId": "504e9f59-43ce-4deb-ac60-51a91df7fca9",
+      "nfInstanceName": "SMF001",
+      "nfType": "SMF",
+      "nfStatus": "REGISTERED",
+      "heartBeatTimer": 0,
+      "plmnList": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ]
+    },
+    {
+      "nfInstanceId": "54e48be8-bb40-469c-90b4-14be6c94b6d2",
+      "nfInstanceName": "UDM001",
+      "nfType": "UDM",
+      "heartBeatTimer": 0,
+      "plmnList": [
+        {
+          "mcc": "262",
+          "mnc": "02"
+        }
+      ]
+    }
+  ]
+}

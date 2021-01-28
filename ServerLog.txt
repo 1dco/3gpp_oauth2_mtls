@@ -1,0 +1,9 @@
+ubuntu@nrf-test:/Code/mutualTLS/nrf-test$ node nnrf-nfm_token.js 
+Go to https://localhost:3000/
+(node:2166) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+(Use `node --trace-deprecation ...` to show where the warning was created)
+POST /oauth2/token 200 33.081 ms - 648
+Your JWT was successfully validated!
+GET /nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6 200 2082.872 ms - 1509
+That JWT is malformed!
+GET /nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6 401 5.686 ms - 58

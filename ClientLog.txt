@@ -1,0 +1,277 @@
+ubuntu@amf-test:/Code/mutualTLS/amf-test-client$ curl -d '{"grant_type":"client_credentials","nfInstanceId":"3fa85f64-5717-4562-b3fc-2c963f66afa6","scope":"nnrf-nfm"}' -X POST -H "Content-Type: application/json" --tlsv1.3 --http2-prior-knowledge --verbose --cacert ca.crt --key client.key --cert client.crt "https://nrf-test:3000/oauth2/token"
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 192.168.64.6:3000...
+* TCP_NODELAY set
+* Connected to nrf-test (192.168.64.6) port 3000 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: ca.crt
+  CApath: /etc/ssl/certs
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+* TLSv1.3 (IN), TLS handshake, Request CERT (13):
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.3 (OUT), TLS handshake, Certificate (11):
+* TLSv1.3 (OUT), TLS handshake, CERT verify (15):
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=nrf-test
+*  start date: Nov 10 09:10:49 2020 GMT
+*  expire date: Nov 10 09:10:49 2021 GMT
+*  common name: nrf-test (matched)
+*  issuer: CN=my-ca
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x55f554c0d7c0)
+> POST /oauth2/token HTTP/2
+> Host: nrf-test:3000
+> user-agent: curl/7.68.0
+> accept: */*
+> content-type: application/json
+> content-length: 108
+> 
+* We are completely uploaded and fine
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* old SSL session ID is stale, removing
+* Connection state changed (MAX_CONCURRENT_STREAMS == 4294967295)!
+< HTTP/2 200 
+< x-powered-by: Express
+< vary: Origin, Accept-Encoding
+< access-control-allow-credentials: true
+< cache-control: no-cache
+< pragma: no-cache
+< expires: -1
+< content-type: application/json; charset=utf-8
+< content-length: 648
+< etag: W/"288-1KOZluqZhmyb6l/EiFft81OI/Hg"
+< 
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYmRiNmNlNy01ZmI2LTQxZGUtYTJhMS1hZDkwNGU5MzQxODQiLCJhdWQiOiI1MDRlOWY1OS00M2NlLTRkZWItYWM2MC01MWE5MWRmN2ZjYTkiLCJleHAiOjE2MDUwMDMxMzQsImlhdCI6MTYwNDk5OTUzNH0.o5gUABTQty2_HP0G8040A7p9Kz4B6IJpYmHUAdbcdT1mXaWIPwplxey-8wOZXRAWIrJ7XUNab8a6INJYxfLhzhVy421nsG7DpvlTZdKKjHgQaMTvNvmWxYQ5Mc81ku-xt34S3E6nD7VTjKjzeL05AFl9R0gBbWhp5eqbDoyA_MtEito1jzj2-nZybOZ3PBbaOKQ-I5qFIA0Pb1DiuBsCUEC8hxzUzE_Y5GeL32kfm77LZqbc7i2Z4CquLEANZfAnQsS08GUYuAcoeXFbijC89V1B2c_F7yehJ5sE34eJoREmlpTvrvsoVLHqU9IgKLVN_O6Q9vVom8vlX_bTu_Qbzg",
+  "token_type": "Bearer",
+  "expires_in": 1605003134,
+  "scope": "nnrf-nfm"
+* Connection #0 to host nrf-test left intact
+
+
+
+
+
+
+ubuntu@amf-test:/Code/mutualTLS/amf-test-client$ curl --tlsv1.3 --http2-prior-knowledge --verbose --cacert ca.crt --key client.key --cert client.crt "https://nrf-test:3000/nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6" \
+>    -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYmRiNmNlNy01ZmI2LTQxZGUtYTJhMS1hZDkwNGU5MzQxODQiLCJhdWQiOiI1MDRlOWY1OS00M2NlLTRkZWItYWM2MC01MWE5MWRmN2ZjYTkiLCJleHAiOjE2MDUwMDMxMzQsImlhdCI6MTYwNDk5OTUzNH0.o5gUABTQty2_HP0G8040A7p9Kz4B6IJpYmHUAdbcdT1mXaWIPwplxey-8wOZXRAWIrJ7XUNab8a6INJYxfLhzhVy421nsG7DpvlTZdKKjHgQaMTvNvmWxYQ5Mc81ku-xt34S3E6nD7VTjKjzeL05AFl9R0gBbWhp5eqbDoyA_MtEito1jzj2-nZybOZ3PBbaOKQ-I5qFIA0Pb1DiuBsCUEC8hxzUzE_Y5GeL32kfm77LZqbc7i2Z4CquLEANZfAnQsS08GUYuAcoeXFbijC89V1B2c_F7yehJ5sE34eJoREmlpTvrvsoVLHqU9IgKLVN_O6Q9vVom8vlX_bTu_Qbzg"
+*   Trying 192.168.64.6:3000...
+* TCP_NODELAY set
+* Connected to nrf-test (192.168.64.6) port 3000 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: ca.crt
+  CApath: /etc/ssl/certs
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+* TLSv1.3 (IN), TLS handshake, Request CERT (13):
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.3 (OUT), TLS handshake, Certificate (11):
+* TLSv1.3 (OUT), TLS handshake, CERT verify (15):
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=nrf-test
+*  start date: Nov 10 09:10:49 2020 GMT
+*  expire date: Nov 10 09:10:49 2021 GMT
+*  common name: nrf-test (matched)
+*  issuer: CN=my-ca
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x555b0561b7c0)
+> GET /nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6 HTTP/2
+> Host: nrf-test:3000
+> user-agent: curl/7.68.0
+> accept: */*
+> authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYmRiNmNlNy01ZmI2LTQxZGUtYTJhMS1hZDkwNGU5MzQxODQiLCJhdWQiOiI1MDRlOWY1OS00M2NlLTRkZWItYWM2MC01MWE5MWRmN2ZjYTkiLCJleHAiOjE2MDUwMDMxMzQsImlhdCI6MTYwNDk5OTUzNH0.o5gUABTQty2_HP0G8040A7p9Kz4B6IJpYmHUAdbcdT1mXaWIPwplxey-8wOZXRAWIrJ7XUNab8a6INJYxfLhzhVy421nsG7DpvlTZdKKjHgQaMTvNvmWxYQ5Mc81ku-xt34S3E6nD7VTjKjzeL05AFl9R0gBbWhp5eqbDoyA_MtEito1jzj2-nZybOZ3PBbaOKQ-I5qFIA0Pb1DiuBsCUEC8hxzUzE_Y5GeL32kfm77LZqbc7i2Z4CquLEANZfAnQsS08GUYuAcoeXFbijC89V1B2c_F7yehJ5sE34eJoREmlpTvrvsoVLHqU9IgKLVN_O6Q9vVom8vlX_bTu_Qbzg
+> 
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* old SSL session ID is stale, removing
+* Connection state changed (MAX_CONCURRENT_STREAMS == 4294967295)!
+< HTTP/2 200 
+< x-powered-by: Express
+< vary: Origin, Accept-Encoding
+< access-control-allow-credentials: true
+< cache-control: no-cache
+< pragma: no-cache
+< expires: -1
+< x-content-type-options: nosniff
+< content-type: application/json; charset=utf-8
+< content-length: 1509
+< etag: W/"5e5-hNFxufXG8gqI+3mWii/UOpiWnNE"
+< 
+[
+  {
+    "nfInstanceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "nfInstanceName": "AMF001",
+    "nfType": "AMF",
+    "nfStatus": "REGISTERED",
+    "heartBeatTimer": 0,
+    "plmnList": [
+      {
+        "mcc": "262",
+        "mnc": "02"
+      }
+    ],
+    "snpnList": [
+      {
+        "mcc": "262",
+        "mnc": "02",
+        "nid": "01"
+      }
+    ],
+    "sNssais": [
+      {
+        "sst": 1,
+        "sd": "00001"
+      }
+    ],
+    "perPlmnSnssaiList": [
+      {
+        "plmnId": {
+          "mcc": "262",
+          "mnc": "02"
+        },
+        "sNssaiList": [
+          {
+            "sst": 1,
+            "sd": "00001"
+          }
+        ],
+        "nid": "01"
+      }
+    ],
+    "fqdn": "pt01.set001.region01.amfi.5gc.mnc002.mcc262.3gppnetwork.org",
+    "allowedPlmns": [
+      {
+        "mcc": "262",
+        "mnc": "02"
+      }
+    ],
+    "allowedSnpns": [
+      {
+        "mcc": "262",
+        "mnc": "02",
+        "nid": "01"
+      }
+    ],
+    "allowedNfTypes": [
+      "AMF"
+    ],
+    "allowedNssais": [
+      {
+        "sst": 1,
+        "sd": "00001"
+      }
+    ],
+    "amfInfo": {
+      "amfSetId": "1",
+      "amfRegionId": "1",
+      "guamiList": [
+        {
+          "plmnId": {
+            "mcc": "262",
+            "mnc": "02"
+          },
+          "amfId": "1"
+        }
+      ],
+      "taiList": [
+        {
+          "plmnId": {
+            "mcc": "262",
+            "mnc": "02"
+          },
+          "tac": "41001",
+          "nid": "01"
+        }
+      ]
+    }
+  }
+* Connection #0 to host nrf-test left intact
+
+
+
+
+ubuntu@amf-test:/Code/mutualTLS/amf-test-client$ curl --tlsv1.3 --http2-prior-knowledge --verbose --cacert ca.crt --key client.key --cert client.crt "https://nrf-test:3000/nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6" \
+>    -H "Authorization: Bearer xxxeyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYmRiNmNlNy01ZmI2LTQxZGUtYTJhMS1hZDkwNGU5MzQxODQiLCJhdWQiOiI1MDRlOWY1OS00M2NlLTRkZWItYWM2MC01MWE5MWRmN2ZjYTkiLCJleHAiOjE2MDQ5NTM2MzgsImlhdCI6MTYwNDk1MDAzOH0.rR-xwQgr5s5RmlIvG-q-QmhJk-luKumAO6nZ4hkNB78BYGkEGtTYtmWJF8WmXLBzYyvuPM-8T_5XOA4R6MpG5ChobZSTeY4Po8-qUxQBuWgyD3FVeqOft4txziGgKb9qg2UYe04CGXz-BDqdSMcKM53LpaV28C-PSGcTfHHf38uLk2aDSLEntuRVYI9pUcihqJJpS1Ktpv3OT1vi0R7oZYN6Q8q6TQPGwBfOnIAWG-OagTsxcKK6pg8IE3Wej9IDKvc_bKl_bj3G7ctsBDkDjGyry_ynPLDWX55N7xJGlyseUS13eu_zFzYjaSG6XImtdmRO7pHtgqCTpwnu5vMkHA"
+*   Trying 192.168.64.6:3000...
+* TCP_NODELAY set
+* Connected to nrf-test (192.168.64.6) port 3000 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: ca.crt
+  CApath: /etc/ssl/certs
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+* TLSv1.3 (IN), TLS handshake, Request CERT (13):
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.3 (OUT), TLS handshake, Certificate (11):
+* TLSv1.3 (OUT), TLS handshake, CERT verify (15):
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=nrf-test
+*  start date: Nov 10 09:10:49 2020 GMT
+*  expire date: Nov 10 09:10:49 2021 GMT
+*  common name: nrf-test (matched)
+*  issuer: CN=my-ca
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x55f057a7b7c0)
+> GET /nnrf-nfm/v1/nf-instances?nfInstanceId=3fa85f64-5717-4562-b3fc-2c963f66afa6 HTTP/2
+> Host: nrf-test:3000
+> user-agent: curl/7.68.0
+> accept: */*
+> authorization: Bearer xxxeyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYmRiNmNlNy01ZmI2LTQxZGUtYTJhMS1hZDkwNGU5MzQxODQiLCJhdWQiOiI1MDRlOWY1OS00M2NlLTRkZWItYWM2MC01MWE5MWRmN2ZjYTkiLCJleHAiOjE2MDQ5NTM2MzgsImlhdCI6MTYwNDk1MDAzOH0.rR-xwQgr5s5RmlIvG-q-QmhJk-luKumAO6nZ4hkNB78BYGkEGtTYtmWJF8WmXLBzYyvuPM-8T_5XOA4R6MpG5ChobZSTeY4Po8-qUxQBuWgyD3FVeqOft4txziGgKb9qg2UYe04CGXz-BDqdSMcKM53LpaV28C-PSGcTfHHf38uLk2aDSLEntuRVYI9pUcihqJJpS1Ktpv3OT1vi0R7oZYN6Q8q6TQPGwBfOnIAWG-OagTsxcKK6pg8IE3Wej9IDKvc_bKl_bj3G7ctsBDkDjGyry_ynPLDWX55N7xJGlyseUS13eu_zFzYjaSG6XImtdmRO7pHtgqCTpwnu5vMkHA
+> 
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* old SSL session ID is stale, removing
+* Connection state changed (MAX_CONCURRENT_STREAMS == 4294967295)!
+< HTTP/2 401 
+< x-powered-by: Express
+< vary: Origin, Accept-Encoding
+< access-control-allow-credentials: true
+< cache-control: no-cache
+< pragma: no-cache
+< expires: -1
+< content-type: application/json; charset=utf-8
+< content-length: 58
+< etag: W/"3a-MYGxIe1MIzvDU7Wh8SJVT4lT1aY"
+< 
+{
+  "status": 401,
+  "message": "That JWT is malformed!"
+* Connection #0 to host nrf-test left intact
